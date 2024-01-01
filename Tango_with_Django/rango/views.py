@@ -9,8 +9,6 @@ def index(request):
     return render(request, 'rango/index.html', context=context)
 
 def about(request):
-    text = '''
-    Rango says here is the about page.
-    <a href="/rango/">back</a>
-'''
-    return HttpResponse(text)
+    context = {'name': "Vincent Princewill"}
+    
+    return render(request, 'rango/about.html', context=context)

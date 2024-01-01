@@ -8,12 +8,11 @@
       <h1>Rango says...</h1>
       <div>
          hey there partner! <br />
+         <p>This tutorial has been put together by {{ name }}</p>
          <strong>{{ boldmessage }}</strong><br />
-         <img
-            src="{% static 'images/Screenshot from 2024-01-01 12-02-48.png' %}"
-            alt="love"
-         />
+
+         <img src="{{ MEDIA_URL }}cat.jpeg'" alt="CAT">
       </div>
-      <div><a href="{% url 'about' %}">About</a><br /></div>
+      <div><a href="{% url 'index' %}">index</a><br /></div>
    </body>
 </html>
