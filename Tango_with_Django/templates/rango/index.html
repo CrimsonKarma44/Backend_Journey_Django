@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
    <head>
       <title>Rango</title>
@@ -8,7 +9,10 @@
       <div>
          hey there partner! <br />
          <strong>{{ boldmessage }}</strong><br />
-         <img src="Tango_with_Django/static/images/wallpaperflare.com_wallpaper (10).jpg" alt="love">
+         <img
+            src="{% static 'images/Screenshot from 2024-01-01 12-02-48.png' %}"
+            alt="love"
+         />
       </div>
       <div><a href="/rango/about/">About</a><br /></div>
    </body>
