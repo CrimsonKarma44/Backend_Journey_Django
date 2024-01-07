@@ -8,10 +8,25 @@
       <h1>Rango says...</h1>
       <div>hey there partner!</div>
       <div>
-         {% if categories %}
+         <h2>Most liked category</h2>
+         {% if likes %}
          <ul>
-            {% for category in categories %}
-            <li>{{ category.name }}</li>
+            {% for like in likes %}
+            <a href="{% url 'show_category' like.slug %}">
+               <li>{{ like.name }}</li>
+            </a>
+            {% endfor %}
+         </ul>
+         {% else %}
+         <strong>There are no categories present.</strong>
+         {% endif %}
+         <h2>Most Viewed Pages</h2>
+         {% if views %}
+         <ul>
+            {% for view in views %}
+            <a href="{% url 'show_category' view.category.slug %}">
+               <li>{{ view.title }}</li>
+            </a>
             {% endfor %}
          </ul>
          {% else %}
