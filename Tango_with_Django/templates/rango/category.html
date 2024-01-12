@@ -17,6 +17,9 @@
          <strong>No pages currently in category.</strong>
          {% endif %} {% else %} The specified category does not exist! {% endif %}
       </div>
-      <div><a href="{% url 'index' %}">index</a><br /></div>
+      <div>
+         <a href="{% url 'index'  %}">index</a><br />
+         <a href="{% url 'add_page' category.slug %}">add page</a><br />
+      </div>
    </body>
 </html>
