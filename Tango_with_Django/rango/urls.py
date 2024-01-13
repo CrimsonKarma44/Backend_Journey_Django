@@ -4,6 +4,9 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+# app_name = 'rango'
+# if you add the app_name then add the value of the app_name to every url you make in the html like {% url 'app_name:...' %}
+# usuall the best practice when working with multiple apps
 
 urlpatterns = [
     path("", views.index, name="index"),

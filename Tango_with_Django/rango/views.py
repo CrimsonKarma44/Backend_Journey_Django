@@ -10,7 +10,7 @@ from .forms import CategoryForm, PageForm
 def index(request):
     # category_list = Category.objects.order_by('-likes')[:5]
     likes = Category.objects.order_by('-likes')[:5]
-    views = Page.objects.order_by('-views')
+    views = Page.objects.order_by('-views')[:6]
     context = {
         # 'categories': category_list,
         'likes': likes,
