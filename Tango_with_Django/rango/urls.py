@@ -10,8 +10,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("register/", views.register, name="register"),
+    path("login/", views.user_login, name="login"),
     path("about/", views.about, name="about"),
     path("category/<str:category_name_url>", views.show_category, name="show_category"),
     path("add_category/", views.add_category, name="add_category"),
     path("<str:category_name_slug>/add_page", views.add_page, name="add_page"),
+    path("restricted/", views.restricted, name="restricted"),
+    path("some_view/", views.some_view, name="some-view"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
