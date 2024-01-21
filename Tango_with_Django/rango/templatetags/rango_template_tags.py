@@ -9,3 +9,9 @@ def get_category_list(cat=None):
         'cats': Category.objects.all(),
         'act_cat': cat
         }
+
+@register.inclusion_tag('rango/links.html')
+def links():
+    return {
+    'link' : [ 'index', 'about', 'add_category', 'register' 'login', 'logout', 'restricted']
+    }

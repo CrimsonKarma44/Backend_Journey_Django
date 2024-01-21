@@ -116,6 +116,11 @@ def user_login(request):
         # blank dictionary object...
         return render(request, 'rango/login.html', {})
 
+@login_required(login_url='login')
+def user_logout(request):
+    logout(request)
+    return redirect('index')
+
 def index(request):
     # category_list = Category.objects.order_by('-likes')[:5]
     likes = Category.objects.order_by('-likes')[:5]
@@ -207,7 +212,7 @@ def add_page(request, category_name_slug):
     context_dict = {'form':form, 'category': category}
     return render(request, 'rango/add_page.html', context_dict)
 
-@login_required
+@login_required(login_url='login')
 def restricted(request):
     return HttpResponse('Since you are logged in, you can see this text!')
 # or
