@@ -2,11 +2,14 @@ from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirec
 # from django.http import HttpResponse
 # from django.core.urlresolvers
 
+from django.contrib.sessions.models import Session
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from .models import Category, Page
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
+# helper
+from .helper_function.cookie_handler import visitor_cookie_handler
 
 
 def register(request):
@@ -122,18 +125,35 @@ def user_logout(request):
     return redirect('index')
 
 def index(request):
+    # to create a cookie
+    request.session.set_test_cookie()
+    visits = request.COOKIES.get("visits")
+
     # category_list = Category.objects.order_by('-likes')[:5]
     likes = Category.objects.order_by('-likes')[:5]
     views = Page.objects.order_by('-views')[:6]
     context = {
         # 'categories': category_list,
         'likes': likes,
-        'views': views
+        'views': views,
+        'visits': visits
         }
     
-    return render(request, 'rango/index.html', context=context)
+    # Obtain our Response object early so we can add cookie information.
+    response = render(request, 'rango/index.html', context)
+
+    # Call function to handle the cookies
+    visitor_cookie_handler(request, response)
+
+    # Return response back to the user, updating any cookies that need changed.
+    return response
 
 def about(request):
+    # to tet the cookie
+    if request.session.test_cookie_worked():
+        print("TEST COOKIE WORKED!")
+        request.session.delete_test_cookie()
+
     context = {'name': "Vincent Princewill"}
     
     return render(request, 'rango/about.html', context=context)
