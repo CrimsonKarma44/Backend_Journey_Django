@@ -9,7 +9,7 @@ from .models import Category, Page
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
 
 # helper
-from .helper_function.cookie_handler import visitor_cookie_handler
+from .helper_function.cookie_handler import visitor_cookie_handler, get_server_side_cookie
 
 
 def register(request):
@@ -127,7 +127,6 @@ def user_logout(request):
 def index(request):
     # to create a cookie
     request.session.set_test_cookie()
-    visits = request.COOKIES.get("visits")
 
     # category_list = Category.objects.order_by('-likes')[:5]
     likes = Category.objects.order_by('-likes')[:5]
@@ -135,17 +134,18 @@ def index(request):
     context = {
         # 'categories': category_list,
         'likes': likes,
-        'views': views,
-        'visits': visits
+        'views': views
         }
     
-    # Obtain our Response object early so we can add cookie information.
-    response = render(request, 'rango/index.html', context)
+    # Obtain our Response object early so we can add cookie information.s"]
+
 
     # Call function to handle the cookies
-    visitor_cookie_handler(request, response)
-
+    visitor_cookie_handler(request)
+    context['visits'] = request.session['visits']
+    print(request.session['visits'])
     # Return response back to the user, updating any cookies that need changed.
+    response = render(request, 'rango/index.html', context)
     return response
 
 def about(request):

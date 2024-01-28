@@ -27,6 +27,10 @@ MEDIA_URL = '/media/'
 # this is an alternative to the @login_required(login_url='/index')
 LOGIN_URL = '/rango/login/'
 
+# browser length sessions
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# persistent sessions
+# SESSION_COOKIE_AGE
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
