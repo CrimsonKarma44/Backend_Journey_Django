@@ -156,6 +156,10 @@ def about(request):
 
     context = {'name': "Vincent Princewill"}
     
+    visitor_cookie_handler(request)
+    context['visits'] = request.session['visits']
+    print(request.session['visits'])
+    
     return render(request, 'rango/about.html', context=context)
 
 
