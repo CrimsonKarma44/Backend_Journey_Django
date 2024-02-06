@@ -1,8 +1,8 @@
-{% extends 'rango/base.html' %} {% block body_block %} 
+{% extends 'rango/base.html' %} {% block body_block %}
 <h1>Rango says...</h1>
 <div>
    hey there partner! <br />
-   <p> visits: {{ visits }}</p>
+   <p>visits: {{ visits }}</p>
 
    <p>This tutorial has been put together by {{ name }}</p>
    <strong>{{ boldmessage }}</strong><br />
@@ -10,4 +10,4 @@
    <img src="{{ MEDIA_URL }}URL/cat.jpg" alt="CAT" />
    <!-- <img src="/media/URL/cat.jpg" alt="CAT" /> -->
 </div>
-   {% endblock %}
+{% endblock %}
