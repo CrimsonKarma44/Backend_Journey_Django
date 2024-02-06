@@ -25,4 +25,5 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('rango/', include('rango.urls')),
+    path('rango/', include('registration.backends.simple.urls')),
 ]
