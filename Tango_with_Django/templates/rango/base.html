@@ -1,14 +1,10 @@
 {% load rango_template_tags %}
 <!DOCTYPE html>
-{% load static %}
+{% load i18n %} {% load static %}
 <html>
    <head lang="en">
       <meta charset="UTF-8" />
-      <title>
-         {% block title_block %}
-         Rango
-         {% endblock %}
-      </title>
+      <title>{% block title_block %} Rango {% endblock %}</title>
    </head>
    <body>
       <div>
@@ -17,14 +13,19 @@
 
       {% block body_block %} {% endblock %}
       <div>
-         {% block link %} 
+         {% block link %}
          <ul>
             {% if user.is_authenticated %}
-               <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
-               <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% trans "Logged in" %}: {{ user.username }}
+            <li>(<a href="{% url 'logout' %}">{% trans "Log out" %}</a> |
+               <a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+            </li>
+            <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
             {% else %}
-               <li><a href="{% url 'login' %}">Sign In</a></li>
-               <li><a href="{% url 'register' %}">Sign Up</a></li>
+            <li>
+               <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
+            </li>
+            <li><a href="{% url 'registration_register' %}">Sign Up</a></li>
             {% endif %}
             <li><a href="{% url 'add_category' %}">Add a New Category</a></li>
             <li><a href="{% url 'about' %}">About</a></li>

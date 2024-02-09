@@ -1,8 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect, resolve_url
 # from django.http import HttpResponse
 # from django.core.urlresolvers
-
-from django.contrib.sessions.models import Session
+# from django.contrib.sessions.models import Session
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from .models import Category, Page
@@ -106,6 +105,7 @@ def user_login(request):
                 return redirect('index')
             else:
                 # An inactive account was used - no logging in!
+                isinstance()
                 return HttpResponse("Your Rango account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.

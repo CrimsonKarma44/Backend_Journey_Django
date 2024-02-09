@@ -25,7 +25,7 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 # this is an alternative to the @login_required(login_url='/index')
-LOGIN_URL = '/rango/login/'
+# LOGIN_URL = '/rango/login/'
 
 
 # If True, users can register
