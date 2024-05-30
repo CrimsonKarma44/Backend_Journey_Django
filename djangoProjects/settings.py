@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "crowdcity_v1.apps.CrowdcityV1Config"
 ]
 
 MIDDLEWARE = [
